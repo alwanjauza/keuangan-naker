@@ -6,6 +6,6 @@ class Surat extends BaseController
 {
     public function index()
     {
-        return view('surat/dokumen-penetapan');
+        return view('surat/dokumenPenetapan/dokumen-penetapan');
     }
 }

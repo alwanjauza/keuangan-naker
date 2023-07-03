@@ -33,6 +33,10 @@ $routes->get('/', 'Home::index');
 // $routes->addRedirect('/', 'Home');
 $routes->get('dokumen-penetapan', 'Surat::index');
 $routes->get('tambah-dokumen-penetapan', 'TambahSurat::index');
+$routes->get('sts', 'STS::index');
+$routes->get('penerimaan-lain', 'PenerimaanLain::index');
+$routes->get('tambah-penerimaan-lain', 'TambahPenerimaanLain::index');
+$routes->get('laporan', 'Laporan::index');
 
 /*
  * --------------------------------------------------------------------

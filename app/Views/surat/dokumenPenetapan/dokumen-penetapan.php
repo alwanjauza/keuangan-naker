@@ -44,7 +44,6 @@
                 </form>
             </div>
         </div>
-
         <div class="card text-bg-light mb-3" style="width: 100%;">
             <div class="card-body">
                 <div class="d-flex justify-content-between align-items-center">
