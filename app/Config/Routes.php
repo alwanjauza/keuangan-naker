@@ -27,15 +27,34 @@ $routes->set404Override();
  * --------------------------------------------------------------------
  */
 
+$routes->get('create-db', function () {
+    $forge = \Config\Database::forge();
+    if ($forge->createDatabase('pegawai')) {
+        echo 'Database created!';
+    }
+});
+
+// Login
+$routes->get('login', 'Auth::index');
+
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 // $routes->addRedirect('/', 'Home');
+
+// Dokumen Penetapan
 $routes->get('dokumen-penetapan', 'Surat::index');
-$routes->get('tambah-dokumen-penetapan', 'TambahSurat::index');
+$routes->get('tambah-dokumen-penetapan', 'Surat::createDokumenPenetapan');
+$routes->post('tambah-dokumen-penetapan', 'Surat::addDokumenPenetapan');
+
+// STS
 $routes->get('sts', 'STS::index');
+
+// Dokumen Penerimaan Lain
 $routes->get('penerimaan-lain', 'PenerimaanLain::index');
 $routes->get('tambah-penerimaan-lain', 'TambahPenerimaanLain::index');
+
+// Laporan
 $routes->get('laporan', 'Laporan::index');
 
 /*
