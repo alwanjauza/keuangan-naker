@@ -36,15 +36,24 @@
             </div>
         </div>
 
-        <?php if (session()->getFlashdata('succes')) : ?>
+        <?php if (session()->getFlashdata('success')) : ?>
             <div class="alert alert-success alert-dismissible show fade">
                 <div class="alert-body">
                     <button class="close" data-dismiss="alert">x</button>
-                    <b>Success !!</b>
+                    <b>Success!!</b>
                     <?= session()->getFlashdata('success') ?>
                 </div>
             </div>
-        <?php endif ?>
+        <?php endif; ?>
+        <?php if (session()->getFlashdata('error')) : ?>
+            <div class="alert alert-danger alert-dismissible show fade">
+                <div class="alert-body">
+                    <button class="close" data-dismiss="alert">x</button>
+                    <b>Error !</b>
+                    <?= session()->getFlashdata('error') ?>
+                </div>
+            </div>
+        <?php endif; ?>
 
         <div class="card text-bg-light mb-3" style="width: 100%;">
             <div class="card-body">
@@ -67,7 +76,7 @@
                                 <th scope="col">Untuk</th>
                                 <th scope="col">Jumlah</th>
                                 <th scope="col">Jumlah di BP/RKUD</th>
-                                <th scope="col">Aksi</th>
+                                <th scope="col" class="text-center">Aksi</th>
                             </tr>
                             <?php foreach ($dokumen_penetapan as $key => $value) : ?>
                                 <tr>
@@ -79,9 +88,16 @@
                                     <td><?= $value->untuk ?></td>
                                     <td><?= $value->jumlah ?></td>
                                     <td><?= $value->jumlah_bpkud ?></td>
-                                    <td class="text-center" style="width: 10%;">
-                                        <a href="#" class="btn btn-secondary"><i class="fas fa-pencil alt"></i></a>
-                                        <a href="#" class="btn btn-secondary"><i class="fas fa-trash"></i></a>
+                                    <td class="text-center" style="width: 15%;">
+                                        <a href="<?= site_url('dokumen-penetapan/edit/' . $value->id_penetapan) ?>" class="btn btn-outline-primary btn-sm disabled"><i class="fa-solid fa-eye"></i></a>
+                                        <a href="<?= site_url('dokumen-penetapan/edit/' . $value->id_penetapan) ?>" class="btn btn-outline-warning btn-sm"><i class="fas fa-pencil alt"></i></a>
+                                        <form class="d-inline" onsubmit="return confirm('Yakin hapus data?')" action="<?= site_url('dokumen-penetapan/' . $value->id_penetapan) ?>" method="post">
+                                            <?= csrf_field() ?>
+                                            <input type="hidden" name="_method" value="DELETE">
+                                            <button class="btn btn-outline-danger btn-sm">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </form>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

@@ -1,43 +1,44 @@
 <?= $this->extend('layout/default') ?>
 
 <?= $this->section('content') ?>
+
 <section class="section">
     <div class="section-header">
-        <h1>Tambah Dokumen Penetapan</h1>
+        <h1>Edit Dokumen Penetapan</h1>
     </div>
-
     <div class="section-body">
         <div class="card text-bg-light mb-3" style="width: 100%">
             <div class="card-body">
-                <h5 class="card-title">Tambah Dokumen Penetapan</h5>
-                <form class="row g-1" action="<?= site_url('tambah-dokumen-penetapan') ?>" method="post" autocomplete="off">
+                <h5 class="card-title">Edit Dokumen Penetapan</h5>
+                <form class="row g-1" action="<?= site_url('dokumen-penetapan/' . $dokumen_penetapan->id_penetapan) ?>" method="post" autocomplete="off">
                     <?= csrf_field() ?>
+                    <input type="hidden" name="_method" value="PUT">
                     <div class="col-md-3">
                         <label for="inputEmail4" class="form-label">No. Bukti</label>
                         <div class="form-check d-flex align-items-center">
                             <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                            <input class="form-control" name="no_bukti" required type="text" placeholder="No. Bukti" aria-label="default input example" style="width: 250px;">
+                            <input class="form-control" value="<?= $dokumen_penetapan->no_bukti ?>" name="no_bukti" required type="text" placeholder="No. Bukti" aria-label="default input example" style="width: 250px;">
                         </div>
                     </div>
                     <div class="col-md-3">
                         <label for="inputEmail4" class="form-label">Tgl. Bukti</label>
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="inputGroup-sizing-default"><i class="fa-solid fa-calendar-days"></i></span>
-                            <input placeholder="Tanggal Bukti" name="tgl_bukti" type="date" class="form-control datepicker">
+                            <input placeholder="Tanggal Bukti" value="<?= $dokumen_penetapan->tgl_bukti ?>" name="tgl_bukti" type="date" class="form-control datepicker">
                         </div>
                     </div>
                     <div class="col-md-3">
                         <label for="inputEmail4" class="form-label">Masa</label>
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="inputGroup-sizing-default"><i class="fa-solid fa-calendar-days"></i></span>
-                            <input placeholder="Tanggal Masa" name="masa" type="date" class="form-control datepicker">
+                            <input placeholder="Tanggal Masa" value="<?= $dokumen_penetapan->masa ?>" name="masa" type="date" class="form-control datepicker">
                         </div>
                     </div>
                     <div class="col-md-3">
                         <label for="inputEmail4" class="form-label">Tgl. Jatuh Tempo</label>
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="inputGroup-sizing-default"><i class="fa-solid fa-calendar-days"></i></span>
-                            <input placeholder="Tanggal Jatuh Tempo" name="tgl_jatuh_tempo" type="date" class="form-control datepicker">
+                            <input placeholder="Tanggal Jatuh Tempo" name="tgl_jatuh_tempo" value="<?= $dokumen_penetapan->tgl_jatuh_tempo ?>" type="date" class="form-control datepicker">
                         </div>
                     </div>
 
@@ -55,14 +56,14 @@
                         <label class="form-label">Nama</label>
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="inputGroup-sizing-default"><i class="fa-solid fa-pen"></i></span>
-                            <input placeholder="Nama" type="text" class="form-control datepicker" name="nama">
+                            <input placeholder="Nama" value="<?= $dokumen_penetapan->nama ?>" type="text" class="form-control datepicker" name="nama">
                         </div>
                     </div>
                     <div class="col-md-3">
                         <label class="form-label">Alamat</label>
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="inputGroup-sizing-default"><i class="fa-solid fa-pen"></i></span>
-                            <input placeholder="Alamat" type="text" class="form-control datepicker" name="alamat">
+                            <input placeholder="Alamat" type="text" value="<?= $dokumen_penetapan->alamat ?>" class="form-control datepicker" name="alamat">
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -81,7 +82,7 @@
                         <label class="form-label">Untuk</label>
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="inputGroup-sizing-default"><i class="fa-solid fa-pen"></i></span>
-                            <input placeholder="Untuk" type="text" class="form-control datepicker" name="untuk">
+                            <input placeholder="Untuk" type="text" value="<?= $dokumen_penetapan->untuk ?>" class="form-control datepicker" name="untuk">
                         </div>
                     </div>
 
@@ -92,32 +93,7 @@
                 </form>
             </div>
         </div>
-
-        <div class="card text-bg-light mb-3" style="width: 100%;">
-            <div class="card-body">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h6 class="card-title">Data Dokumen Penetapan</h6>
-                    <a href="#" class="btn btn-primary" style="width: 10%;">TAMBAH</a>
-                </div>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">Keg.</th>
-                            <th scope="col">Koderek</th>
-                            <th scope="col">Nama Rekening</th>
-                            <th scope="col">Jumlah</th>
-                            <th scope="col">Keterangan</th>
-                            <th scope="col">VA</th>
-                            <th scope="col">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                    </tbody>
-                </table>
-            </div>
-        </div>
     </div>
 </section>
+
 <?= $this->endSection() ?>

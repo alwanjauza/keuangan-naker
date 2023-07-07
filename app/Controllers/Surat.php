@@ -27,4 +27,34 @@ class Surat extends BaseController
             return redirect()->to(site_url('dokumen-penetapan'))->with('success', 'Data berhasil disimpan!');
         }
     }
+
+    public function editDokumenPenetapan($id = null)
+    {
+        if ($id != null) {
+            $query = $this->db->table('dokumen_penetapan')->getWhere(['id_penetapan' => $id]);
+            if ($query->resultID->num_rows > 0) {
+                $data['dokumen_penetapan'] = $query->getRow();
+                echo view('surat/dokumenPenetapan/edit-dokumen-penetapan', $data);
+            } else {
+                throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+            }
+        } else {
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+        }
+    }
+
+    public function updateDokumenPenetapan($id)
+    {
+        $data = $this->request->getPost();
+        unset($data['_method']);
+
+        $this->db->table('dokumen_penetapan')->where(['id_penetapan' => $id])->update($data);
+        return redirect()->to(site_url('dokumen-penetapan'))->with('success', 'Data berhasil diupdate!');
+    }
+
+    public function deleteDokumenPenetapan($id)
+    {
+        $this->db->table('dokumen_penetapan')->where(['id_penetapan' => $id])->delete();
+        return redirect()->to(site_url('dokumen-penetapan'))->with('success', 'Data berhasil dihapus!');
+    }
 }

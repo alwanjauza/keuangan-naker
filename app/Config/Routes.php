@@ -35,7 +35,8 @@ $routes->get('create-db', function () {
 });
 
 // Login
-$routes->get('login', 'Auth::index');
+$routes->get('login', 'Auth::login');
+$routes->post('auth/loginProcess', 'Auth::loginProcess');
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
@@ -46,6 +47,9 @@ $routes->get('/', 'Home::index');
 $routes->get('dokumen-penetapan', 'Surat::index');
 $routes->get('tambah-dokumen-penetapan', 'Surat::createDokumenPenetapan');
 $routes->post('tambah-dokumen-penetapan', 'Surat::addDokumenPenetapan');
+$routes->get('dokumen-penetapan/edit/(:any)', 'Surat::editDokumenPenetapan/$1');
+$routes->put('dokumen-penetapan/(:any)', 'Surat::updateDokumenPenetapan/$1');
+$routes->delete('dokumen-penetapan/(:any)', 'Surat::deleteDokumenPenetapan/$1');
 
 // STS
 $routes->get('sts', 'STS::index');
