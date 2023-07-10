@@ -51,12 +51,30 @@ $routes->get('dokumen-penetapan/edit/(:any)', 'Surat::editDokumenPenetapan/$1');
 $routes->put('dokumen-penetapan/(:any)', 'Surat::updateDokumenPenetapan/$1');
 $routes->delete('dokumen-penetapan/(:any)', 'Surat::deleteDokumenPenetapan/$1');
 
+// Parameter
+$routes->get('parameter', 'Parameter::index');
+$routes->get('tambah-parameter', 'Parameter::createParameter');
+$routes->post('tambah-parameter', 'Parameter::addParameter');
+
+// Jenis Pengukuran
+$routes->get('jenis-pengukuran', 'Pengukuran::index');
+$routes->get('tambah-jenis-pengukuran', 'Pengukuran::createPengukuran');
+$routes->post('tambah-jenis-pengukuran', 'Pengukuran::addPengukuran');
+
 // STS
 $routes->get('sts', 'STS::index');
 
 // Dokumen Penerimaan Lain
 $routes->get('penerimaan-lain', 'PenerimaanLain::index');
 $routes->get('tambah-penerimaan-lain', 'TambahPenerimaanLain::index');
+
+// Preoder
+$routes->get('preorder', 'Preorder::index');
+$routes->get('edit-preorder', 'Preorder::editPreorder');
+$routes->put('edit-preorder/(:any)', 'Preorder::updatePreorder/$1');
+
+// Payment
+$routes->get('payment', 'Payment::index');
 
 // Laporan
 $routes->get('laporan', 'Laporan::index');
