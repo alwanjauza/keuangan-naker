@@ -26,7 +26,7 @@
                         <label class="form-label">Bulan</label>
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="inputGroup-sizing-default"><i class="fa-solid fa-calendar-days"></i></span>
-                            <input placeholder="Pilih Bulan" type="text" class="form-control datepicker" name="tgl_awal">
+                            <input placeholder="Pilih Bulan" type="date" class="form-control datepicker" name="tgl_awal">
                         </div>
                     </div>
                     <div class="button-baru text-end pe-3">
