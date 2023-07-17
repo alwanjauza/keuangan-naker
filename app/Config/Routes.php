@@ -37,10 +37,12 @@ $routes->get('create-db', function () {
 // Login
 $routes->get('login', 'Auth::login');
 $routes->post('auth/loginProcess', 'Auth::loginProcess');
+$routes->get('auth/logout', 'Auth::logout');
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
+$routes->get('/', 'Home::index', ['filter' => 'tokencheck']);
+// $routes->get('/', 'Home::index');
 // $routes->addRedirect('/', 'Home');
 
 // Dokumen Penetapan
