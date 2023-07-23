@@ -46,7 +46,7 @@ $routes->get('/', 'Home::index', ['filter' => 'tokencheck']);
 // $routes->addRedirect('/', 'Home');
 
 // Dokumen Penetapan
-$routes->get('dokumen-penetapan', 'Surat::index');
+$routes->get('dokumen-penetapan', 'Surat::index', ['filter' => 'tokencheck']);
 $routes->get('tambah-dokumen-penetapan', 'Surat::createDokumenPenetapan');
 $routes->post('tambah-dokumen-penetapan', 'Surat::addDokumenPenetapan');
 $routes->get('dokumen-penetapan/edit/(:any)', 'Surat::editDokumenPenetapan/$1');

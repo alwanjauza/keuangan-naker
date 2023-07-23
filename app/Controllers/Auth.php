@@ -50,7 +50,8 @@ class Auth extends BaseController
         $data = array(
             'username' => $email,
             'password' => $password,
-            'aplikasi' => 'PAD'
+            'aplikasi' => 'PAD',
+            'tahun' => 2023
         );
 
         $ch = curl_init();
